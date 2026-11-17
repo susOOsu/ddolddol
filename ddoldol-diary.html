@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>노똘똘의 견생일지</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%90%BE%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- 공통 아이콘: 발바닥 (화면에는 보이지 않고, 아래에서 <use>로 불러 씀) -->
+  <svg class="svg-defs" aria-hidden="true">
+    <defs>
+      <g id="icon-paw" fill="#fff">
+        <ellipse cx="0" cy="6" rx="9" ry="7"/>
+        <circle cx="-10" cy="-6" r="3.5"/>
+        <circle cx="-3.5" cy="-11" r="3.5"/>
+        <circle cx="3.5" cy="-11" r="3.5"/>
+        <circle cx="10" cy="-6" r="3.5"/>
+      </g>
+    </defs>
+  </svg>
+
+  <!-- 마우스 커서 이미지 (화면 가장자리에서만 사용) -->
+  <div id="fx-cursor" aria-hidden="true">
+    <img class="c-base" src="img/cursor-ddoldol.png" alt="" width="64" height="55">
+    <img class="c-ears" src="img/cursor-ears.png" alt="" width="64" height="69">
+  </div>
+
+  <!-- 인트로 -->
+  <div id="intro" aria-hidden="true">
+    <div id="intro-bg"></div>
+    <canvas id="intro-cv"></canvas>
+    <button type="button" class="skip" id="intro-skip">건너뛰기 →</button>
+  </div>
+
+
+  <!-- 헤더 -->
+  <header class="site">
+    <div class="shell">
+      <h1><a href="#top" class="logo">노똘똘<span aria-hidden="true">🐾</span></a></h1>
+      <nav class="main" id="main-nav" aria-label="주 메뉴">
+        <h2 class="blind">주메뉴 영역</h2>
+        <ul>
+          <li><a href="#profile">똘Profile</a></li>
+          <li><a href="#holiday">똘Holiday</a></li>
+          <li><a href="#log">똘Log</a></li>
+          <li><a href="#notice">똘Notice</a></li>
+          <li><a href="#dear">Dear똘</a></li>
+        </ul>
+      </nav>
+      <button type="button" class="menu-btn" aria-label="메뉴 열기" aria-expanded="false" aria-controls="main-nav">☰</button>
+    </div>
+  </header>
+
+
+  <main id="top">
+
+    <!-- 1. HERO -->
+    <section class="hero">
+      <svg class="dotline" viewBox="0 0 500 280" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M10 240 C 60 40 260 0 480 90" vector-effect="non-scaling-stroke"/>
+        <circle cx="10" cy="240" r="6"/>
+      </svg>
+
+      <div class="shell grid">
+        <div class="hero-copy">
+          <span class="eyebrow">DDOLDDOL'S Diary</span>
+          <h2>노똘똘의<br><em>견생일지</em></h2>
+          <p>본투비 막내<br>가족밖에 모르는 착한 애교쟁이<br>왕스훈트지만 마음만은 미니 닥스훈트다!</p>
+        </div>
+        <div class="hero-visual">
+          <span class="circle" aria-hidden="true"></span>
+          <span class="circle two" aria-hidden="true"></span>
+          <img src="img/main-dog.png" alt="활짝 웃고 있는 스탠다드 닥스훈트 노똘똘" width="900" height="1437">
+        </div>
+      </div>
+
+      <!-- 전광판 : 같은 문구가 반복되어 흘러감 (절반 이동 후 처음으로 돌아오도록 두 묶음이 같아야 함) -->
+      <div class="marquee" aria-hidden="true">
+        <div class="track">
+          <span>NOH DDOL DDOL <svg class="mq-paw" viewBox="-14 -14 28 28"><use href="#icon-paw"/></svg> NOH DDOL DDOL <svg class="mq-paw" viewBox="-14 -14 28 28"><use href="#icon-paw"/></svg> NOH DDOL DDOL <svg class="mq-paw" viewBox="-14 -14 28 28"><use href="#icon-paw"/></svg> NOH DDOL DDOL <svg class="mq-paw" viewBox="-14 -14 28 28"><use href="#icon-paw"/></svg> </span>
+          <span>NOH DDOL DDOL <svg class="mq-paw" viewBox="-14 -14 28 28"><use href="#icon-paw"/></svg> NOH DDOL DDOL <svg class="mq-paw" viewBox="-14 -14 28 28"><use href="#icon-paw"/></svg> NOH DDOL DDOL <svg class="mq-paw" viewBox="-14 -14 28 28"><use href="#icon-paw"/></svg> NOH DDOL DDOL <svg class="mq-paw" viewBox="-14 -14 28 28"><use href="#icon-paw"/></svg> </span>
+          <span>NOH DDOL DDOL <svg class="mq-paw" viewBox="-14 -14 28 28"><use href="#icon-paw"/></svg> NOH DDOL DDOL <svg class="mq-paw" viewBox="-14 -14 28 28"><use href="#icon-paw"/></svg> NOH DDOL DDOL <svg class="mq-paw" viewBox="-14 -14 28 28"><use href="#icon-paw"/></svg> NOH DDOL DDOL <svg class="mq-paw" viewBox="-14 -14 28 28"><use href="#icon-paw"/></svg> </span>
+          <span>NOH DDOL DDOL <svg class="mq-paw" viewBox="-14 -14 28 28"><use href="#icon-paw"/></svg> NOH DDOL DDOL <svg class="mq-paw" viewBox="-14 -14 28 28"><use href="#icon-paw"/></svg> NOH DDOL DDOL <svg class="mq-paw" viewBox="-14 -14 28 28"><use href="#icon-paw"/></svg> NOH DDOL DDOL <svg class="mq-paw" viewBox="-14 -14 28 28"><use href="#icon-paw"/></svg> </span>
+        </div>
+      </div>
+    </section>
+    <!-- //HERO -->
+
+
+    <!-- 2. PROFILE -->
+    <section class="sec tone" id="profile">
+      <svg class="wave-top" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 80 L0 45 C240 0 480 80 720 40 S1200 0 1440 45 L1440 80 Z"/>
+      </svg>
+
+      <div class="shell">
+        <div class="grid">
+          <div class="profile-photo">
+            <span class="bg" aria-hidden="true"></span>
+            <div class="blink" id="blink">
+              <img src="img/profile-dog.png" alt="카메라를 올려다보는 노똘똘의 얼굴" width="1400" height="944">
+              <img class="closed" src="img/profile-dog-closed.png" alt="" aria-hidden="true" width="1400" height="944">
+            </div>
+          </div>
+
+          <div class="profile-info">
+            <span class="eyebrow">Profile</span>
+            <h2>똘Profile</h2>
+            <dl class="info-list">
+              <div class="info-line"><dt>이름</dt><dd>노똘똘</dd></div>
+              <div class="info-line"><dt>견종</dt><dd>스탠다드 닥스훈트</dd></div>
+              <div class="info-line"><dt>생일</dt><dd>2012년 5월 26일</dd></div>
+              <div class="info-line"><dt>성격</dt><dd>시크한 애교왕자</dd></div>
+            </dl>
+            <a href="profile.html" class="btn btn-sub">구석구석 알아보기 →</a>
+          </div>
+        </div>
+
+        <div class="tricks">
+          <h3>똘's Skill</h3>
+          <ul class="trick-row">
+            <li class="trick">
+              <div class="pebble"><img src="img/trick-sit.png" alt="앉아 하는 노똘똘" width="450" height="700"></div>
+              <p>앉아</p>
+            </li>
+            <li class="trick">
+              <div class="pebble"><img src="img/trick-down.png" alt="엎드려 하는 노똘똘" width="700" height="677"></div>
+              <p>엎드려</p>
+            </li>
+            <li class="trick">
+              <div class="pebble"><img src="img/trick-meerkat.png" alt="미어캣 자세로 서 있는 노똘똘" width="372" height="800"></div>
+              <p>미어캣</p>
+            </li>
+            <li class="trick">
+              <div class="pebble"><img src="img/trick-paw.png" alt="손을 내미는 노똘똘" width="800" height="589"></div>
+              <p>손</p>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </section>
+    <!-- //PROFILE -->
+
+
+    <!-- 3. HOLIDAY : 1~14살 사진 모음 + 함께한 시간 -->
+    <section class="holiday" id="holiday">
+      <div class="holiday-stick">
+        <div class="hol-head">
+          <span class="eyebrow">Holiday</span>
+          <h2 class="hol-title">똘's HOLIDAY</h2>
+        </div>
+
+        <div class="hol-stage">
+          <div class="time-panel" id="together">
+            <span class="eyebrow">Together</span>
+            <h3>함께한 시간</h3>
+            <p class="time-sub">이렇게 귀엽지만 <em>이만큼이나</em> 살았어요!</p>
+            <ul class="time-list">
+              <li class="counter"><span class="n" id="c-year">0</span><span class="u">년</span></li>
+              <li class="counter"><span class="n" id="c-month">0</span><span class="u">달</span></li>
+              <li class="counter"><span class="n" id="c-week">0</span><span class="u">주</span></li>
+              <li class="counter"><span class="n" id="c-day">0</span><span class="u">일</span></li>
+              <li class="counter"><span class="n" id="c-hour">0</span><span class="u">시간</span></li>
+              <li class="counter"><span class="n" id="c-sec">0</span><span class="u">초</span></li>
+            </ul>
+          </div>
+
+          <!-- 사진 14장은 js/script.js 가 만들어 넣음 (1살 ~ 14살) -->
+          <div class="hol-frame" id="hol-frame" role="group" aria-label="1살부터 14살까지 노똘똘 사진"></div>
+        </div>
+      </div>
+    </section>
+    <!-- //HOLIDAY -->
+
+
+    <!-- 4. LOG : 클릭 사진첩 -->
+    <section class="sec tone alt" id="log">
+      <svg class="wave-top" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 80 L0 40 C240 80 480 0 720 45 S1200 80 1440 40 L1440 80 Z"/>
+      </svg>
+
+      <div class="shell log-head">
+        <div class="log-title">
+          <span class="eyebrow">Log</span>
+          <h2>똘Log</h2>
+          <p class="log-hint">옆으로 끌거나 화살표를 눌러 넘겨보세요.</p>
+        </div>
+        <div class="slider-ctrl">
+          <button type="button" class="circle-btn" id="prev" aria-label="이전 사진">←</button>
+          <div class="dots" id="dots"></div>
+          <button type="button" class="circle-btn" id="next" aria-label="다음 사진">→</button>
+        </div>
+      </div>
+
+      <!-- 슬라이드는 js/script.js 의 PHOTOS 목록으로 만들어짐 -->
+      <ul class="slider" id="slider" tabindex="0" aria-label="똘똘 사진첩"></ul>
+    </section>
+    <!-- //LOG -->
+
+
+    <!-- 5. NOTICE : 게시판 -->
+    <section class="sec notice" id="notice">
+      <div class="shell">
+        <div class="notice-head">
+          <div>
+            <span class="eyebrow">Notice</span>
+            <h2>똘Notice</h2>
+          </div>
+          <button type="button" class="btn btn-ghost">더 보러가기 →</button>
+        </div>
+
+        <ul class="board">
+          <li><span class="tag">공지</span><span class="t">똘똘이 견생일지가 문을 열었어요!</span><time class="d" datetime="2026-10-20">2026.10.20</time></li>
+          <li><span class="tag">오늘</span><span class="t">오늘의 산책은 한강 공원으로 다녀왔어요.</span><time class="d" datetime="2026-10-19">2026.10.19</time></li>
+          <li><span class="tag">오늘</span><span class="t">새 간식을 받고 미어캣 자세를 보여줬어요.</span><time class="d" datetime="2026-10-18">2026.10.18</time></li>
+          <li><span class="tag">소식</span><span class="t">사진첩에 새로운 사진이 추가될 예정이에요.</span><time class="d" datetime="2026-10-15">2026.10.15</time></li>
+        </ul>
+      </div>
+    </section>
+    <!-- //NOTICE -->
+
+
+    <!-- 6. DEAR똘 : 편지 남기기 -->
+    <section class="sec dear" id="dear">
+      <div class="shell grid">
+        <div class="dear-copy">
+          <span class="eyebrow">Dear</span>
+          <h2>Dear똘</h2>
+          <p>똘똘이에게 하고 싶은 말을<br>편지처럼 남겨주세요.</p>
+        </div>
+
+        <div class="dear-body">
+          <form class="dear-form" id="letter-form">
+            <div class="field">
+              <label for="l-name">보내는 사람</label>
+              <input type="text" id="l-name" autocomplete="name" placeholder="이름을 입력해주세요." maxlength="20">
+            </div>
+            <div class="field">
+              <label for="l-msg">편지</label>
+              <textarea id="l-msg" rows="5" placeholder="똘똘에게 하고 싶은 말을 남겨주세요." maxlength="300" required></textarea>
+            </div>
+            <button type="submit" class="btn btn-point">보내기 →</button>
+          </form>
+
+          <!-- 남긴 편지 목록은 js/script.js 가 채움 -->
+          <div class="letters" id="letters"></div>
+        </div>
+      </div>
+    </section>
+    <!-- //DEAR -->
+
+  </main>
+
+
+  <!-- 푸터 -->
+  <footer class="site">
+    <div class="shell">
+      <p>노똘똘🐾 견생일지</p>
+      <small>© 노똘똘</small>
+    </div>
+  </footer>
+
+  <script src="js/script.js"></script>
+</body>
+</html>

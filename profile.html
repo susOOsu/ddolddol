@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>똘Profile - 노똘똘의 견생일지</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='90'%3E%F0%9F%90%BE%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="css/style.css">
+  <!-- 3D 보기 도구 (Google model-viewer). 인터넷이 연결되어 있어야 3D가 켜짐 -->
+  <script type="module" src="https://ajax.googleapis.com/ajax/libs/model-viewer/4.0.0/model-viewer.min.js"></script>
+</head>
+<body>
+
+  <!-- 헤더 -->
+  <header class="site">
+    <div class="shell">
+      <h1><a href="ddoldol-diary.html" class="logo">노똘똘<span aria-hidden="true">🐾</span></a></h1>
+      <nav class="main" id="main-nav" aria-label="주 메뉴">
+        <h2 class="blind">주메뉴 영역</h2>
+        <ul>
+          <li><a href="#body">똘똘이 구석구석</a></li>
+          <li><a href="#likes">호불호</a></li>
+          <li><a href="#emotion">감정</a></li>
+          <li><a href="#skill">똘Skill</a></li>
+          <li><a href="ddoldol-diary.html">← 메인으로</a></li>
+        </ul>
+      </nav>
+      <button type="button" class="menu-btn" aria-label="메뉴 열기" aria-expanded="false" aria-controls="main-nav">☰</button>
+    </div>
+  </header>
+
+
+  <main id="top">
+
+    <!-- 1. BODY : 3D로 구석구석 보기 -->
+    <section class="sec pf-body" id="body">
+      <div class="shell">
+        <span class="eyebrow">Profile</span>
+        <h2>똘똘이 구석구석</h2>
+        <p class="pf-lead">마우스로 끌면 똘똘이가 빙글 돌아요. 동그란 점이나 아래 버튼을 누르면 그 부위를 자세히 볼 수 있어요.</p>
+
+        <div class="pf-stage">
+          <!-- 왼쪽 프로필 정보 3개 -->
+          <dl class="pf-info pf-info-left">
+            <div><dt>이름</dt><dd>노똘똘</dd></div>
+            <div><dt>견종</dt><dd>스탠다드 닥스훈트</dd></div>
+            <div><dt>생일</dt><dd>2012년 5월 26일</dd></div>
+          </dl>
+
+          <!-- 가운데: 3D 보기 (모델이 없으면 사진으로 대신 보여줌) -->
+          <div class="pf-viewer" id="pf-viewer">
+            <model-viewer id="mv" alt="3D로 돌려볼 수 있는 노똘똘" camera-controls touch-action="pan-y" auto-rotate rotation-per-second="18deg" interaction-prompt="auto" shadow-intensity="1" shadow-softness="1" exposure="1.05" loading="eager" reveal="auto"></model-viewer>
+            <div class="pf-fallback" id="pf-fallback" hidden>
+              <img src="img/main-dog.png" alt="활짝 웃고 있는 노똘똘" width="900" height="1437">
+              <p class="pf-fallback-msg">3D 모델을 준비하고 있어요. 지금은 사진으로 구경해요!</p>
+            </div>
+            <p class="pf-hint" id="pf-hint">↔ 끌어서 돌려보세요</p>
+          </div>
+
+          <!-- 오른쪽 프로필 정보 3개 -->
+          <dl class="pf-info pf-info-right">
+            <div><dt>성격</dt><dd>시크한 애교왕자</dd></div>
+            <div><dt>몸무게</dt><dd>13kg</dd></div>
+            <div><dt>특기</dt><dd>미어캣 자세</dd></div>
+          </dl>
+        </div>
+
+        <!-- 부위 설명 말풍선 -->
+        <article class="pf-card" id="pf-card" aria-live="polite">
+          <h3 id="pf-card-title">부위를 눌러 보세요</h3>
+          <p id="pf-card-text">귀, 코, 발, 꼬리까지 똘똘이의 구석구석을 알려 드릴게요.</p>
+          <p class="pf-card-fact" id="pf-card-fact" hidden></p>
+        </article>
+
+        <!-- 부위 버튼 (3D 점을 못 쓰는 화면에서도 누를 수 있음) -->
+        <ul class="pf-parts" id="pf-parts" aria-label="부위 고르기"></ul>
+
+        <!-- 점 위치 잡기 도구: 주소 뒤에 ?edit 를 붙이면 나타남 -->
+        <div class="pf-edit" id="pf-edit" hidden>
+          <p>점 위치 잡기: 위 부위 버튼을 고르고 → 3D 모델에서 원하는 곳을 누르세요. 아래 글을 복사해서 알려 주세요.</p>
+          <textarea id="pf-edit-out" rows="8" readonly></textarea>
+        </div>
+      </div>
+    </section>
+    <!-- //BODY -->
+
+
+    <!-- 2. LIKES : 호불호 -->
+    <section class="sec tone pf-likes" id="likes">
+      <svg class="wave-top" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 80 L0 45 C240 0 480 80 720 40 S1200 0 1440 45 L1440 80 Z"/>
+      </svg>
+      <div class="shell">
+        <span class="eyebrow">Likes</span>
+        <h2>똘똘이의 호불호</h2>
+        <p class="pf-lead">사진 자리에 똘똘이 사진을 넣을 거예요. (지금은 이모지가 대신 들어 있어요)</p>
+
+        <div class="pf-likes-grid">
+          <article class="pf-like good">
+            <h3>호 👍</h3>
+            <ul class="pf-pebbles">
+              <!-- 사진을 넣으려면 <span class="pf-emoji"> 줄을 지우고 <img src="img/파일이름.jpg" alt="설명"> 을 넣으세요 -->
+              <li><div class="pf-lp"><span class="pf-emoji" aria-hidden="true">🚶</span></div><p>산책 (특히 한강!)</p></li>
+              <li><div class="pf-lp"><span class="pf-emoji" aria-hidden="true">🍖</span></div><p>간식 봉지 소리</p></li>
+              <li><div class="pf-lp"><span class="pf-emoji" aria-hidden="true">🛋️</span></div><p>가족 무릎 위</p></li>
+              <li><div class="pf-lp"><span class="pf-emoji" aria-hidden="true">☀️</span></div><p>햇볕 드는 자리</p></li>
+            </ul>
+          </article>
+          <article class="pf-like bad">
+            <h3>불호 👎</h3>
+            <ul class="pf-pebbles">
+              <li><div class="pf-lp"><span class="pf-emoji" aria-hidden="true">🛁</span></div><p>목욕</p></li>
+              <li><div class="pf-lp"><span class="pf-emoji" aria-hidden="true">💉</span></div><p>병원 가는 날</p></li>
+              <li><div class="pf-lp"><span class="pf-emoji" aria-hidden="true">🚪</span></div><p>혼자 남겨지기</p></li>
+              <li><div class="pf-lp"><span class="pf-emoji" aria-hidden="true">🌀</span></div><p>청소기 소리</p></li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+    <!-- //LIKES -->
+
+
+    <!-- 3. EMOTION : 똘똘이의 감정 도감 -->
+    <section class="sec tone alt pf-emotion" id="emotion">
+      <svg class="wave-top" viewBox="0 0 1440 80" preserveAspectRatio="none" aria-hidden="true">
+        <path d="M0 80 L0 40 C240 80 480 0 720 45 S1200 80 1440 40 L1440 80 Z"/>
+      </svg>
+      <div class="shell">
+        <span class="eyebrow">Emotion</span>
+        <h2>똘똘이의 감정</h2>
+        <p class="pf-lead">표정만 봐도 똘똘이 마음이 보여요. 감정을 눌러 보세요! (사진 자리에는 똘똘이 표정 사진을 넣을 거예요)</p>
+
+        <!-- 감정 조약돌은 js/profile.js 의 EMOTIONS 목록으로 만들어짐 -->
+        <ul class="pf-emotions" id="pf-emotions"></ul>
+
+        <article class="pf-card pf-emo-card" id="pf-emo-card" aria-live="polite">
+          <h3 id="pf-emo-title"></h3>
+          <p id="pf-emo-text"></p>
+          <p class="pf-card-fact" id="pf-emo-tip"></p>
+        </article>
+      </div>
+    </section>
+    <!-- //EMOTION -->
+
+
+    <!-- 4. SKILL : 똘Skill 도감 -->
+    <section class="sec pf-skill-sec" id="skill">
+      <div class="shell">
+        <span class="eyebrow">Skill</span>
+        <h2>똘's Skill 도감</h2>
+        <p class="pf-lead">마스터한 기술, 연마 중인 기술, 까먹은 기술까지 전부 모았어요. 단, <strong>모든 스킬은 간식이 눈앞에 있을 때만 성공</strong>해요. 간식이 없으면 “응? 뭐라고? 못 들었는데?” 모드로 돌입합니다.</p>
+
+        <div class="pf-tabs" id="pf-tabs" role="group" aria-label="스킬 상태 고르기">
+          <button type="button" class="pf-tab on" data-filter="all">전체</button>
+          <button type="button" class="pf-tab" data-filter="master">마스터</button>
+          <button type="button" class="pf-tab" data-filter="training">연마중</button>
+          <button type="button" class="pf-tab" data-filter="forgot">까먹음</button>
+        </div>
+
+        <!-- 스킬 카드는 js/profile.js 의 SKILLS 목록으로 만들어짐 -->
+        <ul class="pf-skills" id="pf-skills"></ul>
+      </div>
+    </section>
+    <!-- //SKILL -->
+
+  </main>
+
+
+  <!-- 푸터 -->
+  <footer class="site">
+    <div class="shell">
+      <p>노똘똘🐾 견생일지</p>
+      <small>© 노똘똘</small>
+    </div>
+  </footer>
+
+  <script src="js/profile.js"></script>
+</body>
+</html>
