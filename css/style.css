@@ -434,6 +434,7 @@ footer.site .shell {display: flex; justify-content: space-between; align-items: 
   /* 두 칸이던 영역을 한 칸으로 */
   .profile-photo, .profile-info, .dear-copy, .dear-body {grid-column: 1 / -1;}
   .sec {padding: var(--sp7) 0;}
+  .grid {grid-template-columns: 1fr;}
   /* 등장 전 좌우 이동은 화면 밖으로 넘치므로 아래에서 올라오게 */
   .reveal.from-left, .reveal.from-right {transform: translateY(36px);}
   .reveal.in {transform: none;}
@@ -509,4 +510,8 @@ footer.site .shell {display: flex; justify-content: space-between; align-items: 
   .pf-pebble {width: 110px;}
   .pf-skill-head h3 {font-size: 26px;}
   .pf-comment {font-size: 20px;}
+}
+@media (max-width: 400px) {
+  .circle-btn {width: 44px; height: 44px;}
+  .dots button {width: 15px; height: 15px;}
 }
