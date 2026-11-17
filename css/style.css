@@ -434,6 +434,9 @@ footer.site .shell {display: flex; justify-content: space-between; align-items: 
   /* 두 칸이던 영역을 한 칸으로 */
   .profile-photo, .profile-info, .dear-copy, .dear-body {grid-column: 1 / -1;}
   .sec {padding: var(--sp7) 0;}
+  /* 등장 전 좌우 이동은 화면 밖으로 넘치므로 아래에서 올라오게 */
+  .reveal.from-left, .reveal.from-right {transform: translateY(36px);}
+  .reveal.in {transform: none;}
   .tricks {margin-top: var(--sp7);}
   /* HERO : 글자(왼쪽)와 사진(오른쪽)을 나란히 */
   .hero .grid {grid-template-columns: 1fr .9fr; column-gap: 8px;}
